@@ -33,12 +33,15 @@ function Login(props){
         axios.get("http://localhost:3000" + "/login/signin/"+email+"/"+password)
             .then((response) => {
             if (response.status === 200) {
-                setmsg("");
-                props.history.push("/homepage");
+              setmsg("");
+              props.setcurremail(email);
+              props.props.history.push("/homepage");  
             }
             })
             .catch((error) => {
-            setmsg(error.response.data.msg);
+              console.log(props);
+            console.log(error);
+            if(error.response!=null) setmsg(error.response.data.msg);
             });
         }
     }
