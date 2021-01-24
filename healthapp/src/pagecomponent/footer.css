@@ -1,0 +1,11 @@
+.footer{
+    height: fit-content;
+    position: fixed;
+    left: bottom;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 50vh 0 50vh #000;
+}
+
+
