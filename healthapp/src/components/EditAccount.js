@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { destroyObjectProperties } from 'highcharts';
 import {MDBBtn, MDBCard, MDBCardBody, MDBCardText, MDBCardTitle,MDBIcon, MDBInput} from 'mdbreact'
 import { useEffect, useState } from 'react';
 
-function Editaccount() {
+function Editaccount(props) {
   const [oldpassword, setoldpassword] = useState();
   const[newpassword,setnewpassword]=useState();
   const [invalidmsg, setmsg] = useState("");
@@ -59,7 +60,7 @@ function Editaccount() {
 
           <MDBCardBody>
             <div>
-              <MDBIcon icon="user" size="lg" /> &nbsp;Test@gmail.com
+              <MDBIcon icon="user" size="lg" /> &nbsp;{props.curremail}
             </div>
             <form>
               <p style={{ color: "red" }}>{invalidmsg}</p>

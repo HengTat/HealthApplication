@@ -14,7 +14,6 @@ function App() {
   const [loginemail,setloginemail]= useState();
 
   function setcurremail(email){
-    console.log(loginemail);
     setloginemail(email);
   }
 
@@ -32,11 +31,11 @@ function App() {
               <Login setcurremail={setcurremail} props={props}/>
             }   
            />
-          <Route path="/Homepage" render={()=>{
+          <Route path="/Homepage" render={()=>
             <Homepage curremail={loginemail} />
-          }}></Route>
+          }></Route>
           <Route path="/Signup" component={Signup}></Route>
-          <Route path="/EditAccount" component={Editaccount}></Route>
+          <Route path="/EditAccount" render={()=><Editaccount curremail={loginemail}></Editaccount>}></Route>
           <Route path="/healthupdate" component={Updates}></Route>
           <Route path="/goals" component={Goals}></Route>
         </div>
