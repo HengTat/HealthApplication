@@ -6,6 +6,7 @@ Create a .env file in the Express directory and create a varaible called DB_CONN
 
 
 <h2>ScreenShots</h2>
+<img src="https://user-images.githubusercontent.com/60685286/104806313-91477600-5811-11eb-84b7-6d8947291859.png">
 <img scr="https://user-images.githubusercontent.com/60685286/105620379-78ede180-5e37-11eb-9225-32bbe021e60c.png">
 <img scr="https://user-images.githubusercontent.com/60685286/105620380-7a1f0e80-5e37-11eb-801a-e31ab79a7645.png">
 <img scr="https://user-images.githubusercontent.com/60685286/105620381-7ab7a500-5e37-11eb-9c5d-727f08a31c2b.png">
