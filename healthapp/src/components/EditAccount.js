@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { destroyObjectProperties } from 'highcharts';
-import {MDBBtn, MDBCard, MDBCardBody, MDBCardText, MDBCardTitle,MDBIcon, MDBInput} from 'mdbreact'
+import {MDBBtn, MDBCard, MDBCardBody, MDBCardTitle,MDBIcon} from 'mdbreact'
 import { useEffect, useState } from 'react';
 
 function Editaccount(props) {

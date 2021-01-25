@@ -1,8 +1,7 @@
-import{MDBBtn,MDBCard,MDBCardBody,MDBCardImage,MDBCardTitle,MDBCol,MDBCardText, MDBInput,MDBIcon} from 'mdbreact';
+import{MDBBtn,MDBCard,MDBCardBody,MDBCardTitle,MDBCol,MDBCardText,MDBIcon} from 'mdbreact';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+
 
 function Login(props){
     const[email,setemail]= useState("");

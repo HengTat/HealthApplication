@@ -1,11 +1,7 @@
-import react from 'react';
 import {
-  MDBBtn,
-  MDBCard,
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
-  MDBCol,
   MDBIcon,
 } from "mdbreact";
 import PostHealthUdpates from '../HealthUpdates/posthealthupdates';

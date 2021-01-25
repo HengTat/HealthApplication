@@ -2,16 +2,13 @@ import {
   MDBBtn,
   MDBCard,
   MDBCardBody,
-  MDBCardImage,
   MDBCardTitle,
   MDBCol,
   MDBCardText,
-  MDBInput,
   MDBIcon,
 } from "mdbreact";
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import config from "../config";
 
 function Signup (props){
 

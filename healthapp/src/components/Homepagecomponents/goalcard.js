@@ -1,4 +1,3 @@
-import react from 'react';
 import {
   MDBBtn,
   MDBCardBody,
@@ -20,8 +19,6 @@ function GoalCard(){
             <div>
               <h4>
                 <div>
-                  <div>Current Goal</div>
-                  <br />
                   <div>
                     <MDBIcon icon="weight" /> &nbsp;BodyWeight: 65 kg
                   </div>

@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import{MDBBtn,MDBContainer,MDBModal,MDBModalBody,MDBModalFooter,MDBModalHeader} from 'mdbreact'
 import axios from 'axios';
 
@@ -38,16 +38,28 @@ function PostHealthUdpates(props){
     function handlebodyfat(event){
         setbodyfat(event.target.value);
     }
-    function submit(){
-        axios
-          .post("http://localhost:3000/updates/healthdetailupdate", {
-            email: props.curremail,
-            weight: weight,
-            height: height,
-            age: age,
-          })
-          .then((response) => console.log(response));
+    async function submit(){
         toggle();
+
+        if(props.setisLoading!=null){
+        props.setisLoading(true);
+        }
+        const payload = {
+          email: props.curremail,
+          weight: weight,
+          height: height,
+          age: age,
+        };
+        await axios
+          .post("http://localhost:3000/updates/healthdetailupdate", payload)
+          .then((response) => {
+            console.log(response)
+            if (props.setisLoading != null & props.setisLoading != null) {
+              props.getdata();
+              props.setisLoading(false);
+            }
+          });
+
     }
 
     return (
@@ -63,19 +75,35 @@ function PostHealthUdpates(props){
             <MDBModalBody>
               <form style={{ color: "black" }}>
                 <label>Weight(kg):</label>
-                <input type="text" className="form-control"></input>
+                <input
+                  type="text"
+                  className="form-control"
+                  onChange={handleweight}
+                ></input>
                 <br />
                 <br />
                 <label>height(cm):</label>
-                <input type="text" className="form-control"></input>
+                <input
+                  type="text"
+                  className="form-control"
+                  onChange={handleheight}
+                ></input>
                 <br />
                 <br />
                 <label>bodyfat:</label>
-                <input type="text" className="form-control"></input>
+                <input
+                  type="text"
+                  className="form-control"
+                  onChange={handlebodyfat}
+                ></input>
                 <br />
                 <br />
                 <label>Age: </label>
-                <input type="text" className="form-control"></input>
+                <input
+                  type="text"
+                  className="form-control"
+                  onChange={handleage}
+                ></input>
                 <br />
               </form>
             </MDBModalBody>

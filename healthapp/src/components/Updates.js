@@ -2,7 +2,6 @@ import react, { useEffect, useState } from 'react'
 import {MDBCard,MDBDataTable} from 'mdbreact'
 import PostHealthUdpates from './HealthUpdates/posthealthupdates';
 import axios from 'axios';
-import { useSerialIds } from 'highcharts';
 
 function Updates(props){
   const [isLoading, setisLoading] = useState(true);
@@ -44,24 +43,28 @@ function Updates(props){
     rows: updatedata,
   };
 
-  useEffect(() => {
+  function getdata(){
     axios
       .get(
         "http://localhost:3000/updates/getcurrenthealthstatus/" +
           props.curremail
       )
       .then((data) => {
-        var i=1;
-        for(var x of data.data){
-            x['number']=i;
-            i++;
-            x["BMI"]="test";
-            x["status"]="test";
+        var i = 1;
+        for (var x of data.data) {
+          x["number"] = i;
+          i++;
+          x["BMI"] = "test";
+          x["status"] = "test";
         }
         setupdatedata(data.data);
         data.rows = updatedata;
         setisLoading(false);
       });
+  }
+
+  useEffect(() => {
+    getdata()
   },[]);
 
   if (isLoading) {
@@ -82,6 +85,8 @@ function Updates(props){
         <PostHealthUdpates
           style={{ float: "right" }}
           curremail={props.curremail}
+          setisLoading={setisLoading}
+          getdata={getdata}
         ></PostHealthUdpates>
       </MDBCard>
       <MDBCard style={{ backgroundColor: "#4B515D" }}>
@@ -95,8 +100,8 @@ function Updates(props){
           fixed
           hover
           tbodyTextWhite
-          entriesOptions={[1, 5, 10]}
-          entries={10}
+          entries={8}
+          entriesOptions={[1, 5, 8]}
           data={data}
         />
       </MDBCard>

@@ -63,12 +63,6 @@ function Homepage(props){
             </MDBCard>
           </div>
         </div>
-        <br />
-        <br /> <br />
-        <br /> <br />
-        <br />
-        <br />
-        <br />
       </div>
     );
 }

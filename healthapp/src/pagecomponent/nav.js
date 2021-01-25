@@ -4,17 +4,9 @@ import {
   MDBNavbarNav,
   MDBNavItem,
   MDBNavLink,
-  MDBNavbarToggler,
   MDBCollapse,
-  MDBFormInline,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
   MDBIcon
 } from "mdbreact";
-import { useState } from "react";
-import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import './nav.css'
 
 

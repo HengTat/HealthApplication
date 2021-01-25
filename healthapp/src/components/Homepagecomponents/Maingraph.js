@@ -1,4 +1,3 @@
-import react from 'react';
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
@@ -101,14 +100,14 @@ const options = {
         21.5,
         21.4,
         20.8,
-        21.0,
-        20.5,
-        20.0,
-        19.5,
-        19.4,
-        19.1,
-        19.6,
-        18.4,
+        19.0,
+        18.5,
+        18.0,
+        17.5,
+        16.4,
+        15.1,
+        14.6,
+        13.4,
       ],
       tooltip: {
         valueSuffix: " %",

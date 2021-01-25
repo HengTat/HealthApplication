@@ -16,6 +16,7 @@ router.post('/healthdetailupdate',async(req,res)=>{
         age:req.body.age,
         user: userid
     });
+    console.log(req.body.weight);
     newhealthdetail.save().then(()=>{ res.status(201).json("Health details have been updated succesfully");
 });
 })
