@@ -56,10 +56,18 @@ function PostHealthUdpates(props){
           .post("http://localhost:3000/updates/healthdetailupdate", payload)
           .then((response) => {
             console.log(response)
-            if (props.setisLoading != null & props.setisLoading != null) {
-              props.getdata();
+            if (props.setisLoading != null ) {
               props.setisLoading(false);
+              
             }
+            
+            if (props.getdata != null) {
+              props.getdata();
+            }
+            if (props.gethealthdata != null) {
+              props.gethealthdata();
+            }
+
           });
     }
 

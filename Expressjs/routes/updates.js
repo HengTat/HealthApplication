@@ -9,7 +9,6 @@ const jwt= require('jsonwebtoken');
 //updatehealth
 router.post('/healthdetailupdate',async(req,res)=>{
     const userid= await user.findOne({email:req.body.email}).select('_id');
-    console.log(req.body.bodyfat);
     const newhealthdetail= new healthdetail({
         weight:req.body.weight,
         height:req.body.height,

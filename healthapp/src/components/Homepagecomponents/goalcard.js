@@ -7,6 +7,7 @@ import {
   MDBIcon,
 } from "mdbreact";
 import { useEffect, useState } from "react";
+import SetGoal from "../Goals/Setgoal";
 
 function GoalCard(props){
 
@@ -14,13 +15,15 @@ function GoalCard(props){
   const [currhealth, setcurrhealth] = useState([
     { BMI: 0, weight: 0, height: 0, bodyfat: 0, age: 0 },
   ]);
+  const[difference,setdifference]=useState({weight:0,bodyfat:0});
 
 
-  async function getdata(){
-    props.setisLoading(true);
+  async function getgoaldata(){
+
     await axios.get("http://localhost:3000/goal/getlatest/"+props.curremail).then((data)=>{
     setgoal(data.data);
     });
+
     await axios
       .get(
         "http://localhost:3000/updates/getlatesthealthdetail/" +
@@ -28,13 +31,16 @@ function GoalCard(props){
       )
       .then((data) => {
         setcurrhealth(data.data);
-        props.setisLoading(false);
+        setdifference({weight:(currhealth[0].weight-goal[0].weight),bodyfat:(currhealth[0].bodyfat-goal[0].bodyfat)})
       });
+
   }
 
   useEffect(() => {
-    getdata();
+    getgoaldata();
   }, []);
+
+
 
     return (
       <div>
@@ -59,16 +65,16 @@ function GoalCard(props){
                 <div>
                   <div>Difference</div> <br />
                   <div>
-                    <MDBIcon icon="weight" /> &nbsp; BodyWeight: 12 kg
+                    <MDBIcon icon="weight" /> &nbsp; BodyWeight: {difference.weight} kg
                   </div>
                   <br />
                   <div>
-                    <MDBIcon icon="percentage" /> &nbsp; BodyFat: 4 %
+                    <MDBIcon icon="percentage" /> &nbsp; BodyFat: {difference.bodyfat} %
                   </div>
                   <br />
                 </div>
               </h4>
-              <MDBBtn style={{ width: "300px" }}>Set Goal ></MDBBtn>
+              <SetGoal curremail={props.curremail} getgoaldata={getgoaldata}></SetGoal>
             </div>
           </MDBCardText>
         </MDBCardBody>

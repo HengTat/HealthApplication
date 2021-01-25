@@ -12,7 +12,6 @@ import GoalCard from "./Homepagecomponents/goalcard";
 import Maingraph from "./Homepagecomponents/Maingraph";
 
 function Homepage(props){
-  const [isLoading, setisLoading] = useState(true);
 
     return (
       <div style={{ backgroundColor: "#37474F" }}>
@@ -47,7 +46,7 @@ function Homepage(props){
               color="stylish-color-dark"
               style={{ width: "100%", height: "450px" }}
             >
-              <CurrentHealth curremail={props.curremail} setisLoading={setisLoading}></CurrentHealth>
+              <CurrentHealth curremail={props.curremail} ></CurrentHealth>
             </MDBCard>
           </div>
           <div
@@ -62,7 +61,7 @@ function Homepage(props){
               color="stylish-color-dark"
               style={{ width: "100%", height: "450px" }}
             >
-              <GoalCard curremail={props.curremail} setisLoading={setisLoading}></GoalCard>
+              <GoalCard curremail={props.curremail}></GoalCard>
             </MDBCard>
           </div>
         </div>

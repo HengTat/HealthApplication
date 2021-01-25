@@ -37,11 +37,14 @@ function SetGoal(props){
       toggle();
       const payload={weight:weight,bodyfat:bodyfat,email:props.curremail}
       await axios.post("http://localhost:3000/goal/newgoal",payload).then((response)=>{
-        console.log(response);
         if (props.setisLoading != null & props.setisLoading != null) {
               props.getdata();
               props.setisLoading(false);
             }
+
+          if(props.getgoaldata!=null){
+            props.getgoaldata();
+          }
         })
     }
     return (

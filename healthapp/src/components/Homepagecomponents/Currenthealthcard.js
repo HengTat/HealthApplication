@@ -11,24 +11,22 @@ import PostHealthUdpates from '../HealthUpdates/posthealthupdates';
 function CurrentHealth(props){
     const [currhealth, setcurrhealth] = useState([{BMI: 0, weight: 0,height:0,bodyfat:0,age:0}]);
 
-    async function getdata() {
-      
+    async function gethealthdata() {
       await axios
         .get("http://localhost:3000/updates/getlatesthealthdetail/" + props.curremail)
         .then((data) => {
-          props.setisLoading(true);
           setcurrhealth(data.data);
-          props.setisLoading(false);
         });
     }
 
     useEffect(() => {
-      getdata();
+      gethealthdata();
     }, []);
 
 
-  
+
     return (
+      
       <div>
         <MDBCardBody style={{ color: "white" }}>
           <MDBCardTitle>
@@ -39,13 +37,13 @@ function CurrentHealth(props){
             <br />
             <div>
               <h4>
-                <MDBIcon icon="balance-scale" /> &nbsp; BMI :&nbsp; 20
+                <MDBIcon icon="balance-scale" /> &nbsp; BMI :&nbsp; 0
               </h4>
             </div>
             <br />
             <div>
               <h4>
-                <MDBIcon icon="weight" /> &nbsp; Weight :&nbsp;{" "}
+                <MDBIcon icon="weight" /> &nbsp; Weight :&nbsp;
                 {currhealth[0].weight} kg
               </h4>
             </div>
@@ -72,7 +70,7 @@ function CurrentHealth(props){
               </h4>
             </div>
             <br />
-            <PostHealthUdpates curremail={props.curremail} setisLoading={props.setisLoading()}></PostHealthUdpates>
+            <PostHealthUdpates curremail={props.curremail} gethealthdata={gethealthdata} ></PostHealthUdpates>
           </MDBCardText>
         </MDBCardBody>
       </div>
