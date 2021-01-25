@@ -36,7 +36,7 @@ function App() {
           }></Route>
           <Route path="/Signup" component={Signup}></Route>
           <Route path="/EditAccount" render={()=><Editaccount curremail={loginemail}></Editaccount>}></Route>
-          <Route path="/healthupdate" component={Updates}></Route>
+          <Route path="/healthupdate" render={()=><Updates curremail={loginemail} />}></Route>
           <Route path="/goals" component={Goals}></Route>
         </div>
       </Router>

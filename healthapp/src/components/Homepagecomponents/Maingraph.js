@@ -147,8 +147,6 @@ function Maingraph(){
         />
       </div>
     );
-
 }
-
 
 export default Maingraph;

@@ -1,7 +1,8 @@
 import react, { useEffect, useState } from 'react'
 import{MDBBtn,MDBContainer,MDBModal,MDBModalBody,MDBModalFooter,MDBModalHeader} from 'mdbreact'
+import axios from 'axios';
 
-function PostHealthUdpates(){
+function PostHealthUdpates(props){
 
     const[modal,setModal]= useState(false);
     const[weight,setWeight]=useState();
@@ -38,9 +39,17 @@ function PostHealthUdpates(){
         setbodyfat(event.target.value);
     }
     function submit(){
-
+        axios
+          .post("http://localhost:3000/updates/healthdetailupdate", {
+            email: props.curremail,
+            weight: weight,
+            height: height,
+            age: age,
+          })
+          .then((response) => console.log(response));
         toggle();
     }
+
     return (
       <div>
         <MDBContainer>

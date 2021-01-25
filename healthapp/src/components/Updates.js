@@ -1,6 +1,7 @@
-import react from 'react'
+import react, { useEffect } from 'react'
 import {MDBCard,MDBDataTable} from 'mdbreact'
 import PostHealthUdpates from './HealthUpdates/posthealthupdates';
+import axios from 'axios';
 
 const data = {
   columns: [
@@ -12,13 +13,13 @@ const data = {
     },
     {
       label: "Height",
-      field: "task",
+      field: "height",
       sort: "asc",
       width: 270,
     },
     {
       label: "Weight",
-      field: "type",
+      field: "weight",
       sort: "asc",
       width: 270,
     },
@@ -39,7 +40,14 @@ const data = {
 };
 
 
-function Updates(){
+function Updates(props){
+
+  useEffect(()=>{
+    console.log("test");
+    axios.get("http://localhost:3000/updates/getcurrenthealthstatus/"+props.curremail).then(data=>data.rows);
+  })
+
+
     return (
       <div>
         <MDBCard
@@ -52,7 +60,7 @@ function Updates(){
         >
           <h2>HealthUpdates</h2>
 
-          <PostHealthUdpates style={{float:"right"}}></PostHealthUdpates>
+          <PostHealthUdpates style={{float:"right"}} curremail={props.curremail}></PostHealthUdpates>
         </MDBCard>
         <MDBCard style={{ backgroundColor: "#4B515D" }}>
           <MDBDataTable

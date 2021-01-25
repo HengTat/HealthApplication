@@ -10,7 +10,7 @@ import CurrentHealth from "./Homepagecomponents/Currenthealthcard";
 import GoalCard from "./Homepagecomponents/goalcard";
 import Maingraph from "./Homepagecomponents/Maingraph";
 
-function Homepage(){
+function Homepage(props){
     return (
       <div style={{ backgroundColor: "#37474F" }}>
         <br />
@@ -44,7 +44,7 @@ function Homepage(){
               color="stylish-color-dark"
               style={{ width: "100%", height: "450px" }}
             >
-              <CurrentHealth></CurrentHealth>
+              <CurrentHealth curremail={props.curremail}></CurrentHealth>
             </MDBCard>
           </div>
           <div

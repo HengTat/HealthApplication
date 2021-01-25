@@ -10,7 +10,7 @@ import {
 } from "mdbreact";
 import PostHealthUdpates from '../HealthUpdates/posthealthupdates';
 
-function CurrentHealth(){
+function CurrentHealth(props){
     return (
       <div>
         <MDBCardBody style={{ color: "white" }}>
@@ -52,7 +52,7 @@ function CurrentHealth(){
               </h4>
             </div>
             <br />
-            <PostHealthUdpates></PostHealthUdpates>
+            <PostHealthUdpates curremail={props.curremail}></PostHealthUdpates>
           </MDBCardText>
         </MDBCardBody>
       </div>

@@ -7,10 +7,8 @@ const user = require('../model/user');
 const jwt= require('jsonwebtoken');
 
 //updatehealth
-router.post('/healthdetailupdate',authenticateToken,async(req,res)=>{
-    console.log(req.email);
-    const userid= await user.findOne({email:req.email}).select('_id');
-    console.log(userid);
+router.post('/healthdetailupdate',async(req,res)=>{
+    const userid= await user.findOne({email:req.body.email}).select('_id');
     const newhealthdetail= new healthdetail({
         weight:req.body.weight,
         height:req.body.height,
@@ -23,8 +21,9 @@ router.post('/healthdetailupdate',authenticateToken,async(req,res)=>{
 })
 
 //gethealth
-router.get('/getcurrenthealthstatus',(req,res)=>{
-    healthdetail.find({email:req.email});
+router.get('/getcurrenthealthstatus/:email',async(req,res)=>{
+    const userid= await user.findOne({email:req.params.email}).select('_id');
+    healthdetail.find({user:userid}).then(data=>res.json(data));
 });
 
 function authenticateToken(req, res, next) {
