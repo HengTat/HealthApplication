@@ -49,8 +49,26 @@ router.get("/signin/:email/:password", async (req, res) => {
     })
 });
 
-//get user details
-router.put('/edituser',(req,res)=>{
+//changepassword
+router.put('/changepassword/:email/:oldpassword/:newpassword',async(req,res)=>{
+      if (!req.params.oldpassword || !req.params.newpassword) {
+        return res.status(400).json({ msg: "Requires old and new password" });
+      }
+      if(req.params.newpassword.length<5){
+            return res.status(400).json({ msg: "Password is too short" });
+      }
+      const curruser= await user.findOne({email:req.params.email});
+      const passwordhash=await bcrypt.hash(req.params.newpassword,10)
+      bcrypt.compare(req.params.oldpassword,curruser.password,function (err,result){
+      if(result){
+          user.updateOne({email:req.params.email},{password:passwordhash}).then(()=>res.status(200).json({msg:"change password successful"}))
+      }
+      else if(result===false){
+        return res.status(400).json({ msg: "Invalid old password" });
+      }
+    })
+
+
   
 
 })

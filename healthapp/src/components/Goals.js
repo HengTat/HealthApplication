@@ -4,7 +4,6 @@ import SetGoal from './Goals/Setgoal';
 import axios from 'axios';
 
 function Goals(props){
-
      const [isLoading, setisLoading] = useState(true);
      const [updatedata, setupdatedata] = useState([]);
 
@@ -17,26 +16,20 @@ function Goals(props){
            width: 150,
          },
          {
-           label: "Height",
-           field: "height",
+           label: "Weight (kg)",
+           field: "weight",
            sort: "asc",
            width: 270,
          },
-         {
-           label: "Weight",
-           field: "weight",
+        {
+           label: "BodyFat (%)",
+           field: "bodyfat",
            sort: "asc",
            width: 270,
          },
          {
            label: "BMI",
            field: "BMI",
-           sort: "asc",
-           width: 270,
-         },
-         {
-           label: "Status",
-           field: "status",
            sort: "asc",
            width: 270,
          },
@@ -47,10 +40,11 @@ function Goals(props){
      function getdata() {
        axios
          .get(
-           "http://localhost:3000/updates/getcurrenthealthstatus/" +
+           "http://localhost:3000/goal/getgoals/" +
              props.curremail
          )
          .then((data) => {
+           console.log("test123")
            var i = 1;
            for (var x of data.data) {
              x["number"] = i;

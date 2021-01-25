@@ -7,12 +7,14 @@ const login= require("./routes/login");
 const app= express();
 const cors= require('cors');
 const jwt= require('jsonwebtoken');
+const goal= require('./routes/goal')
 
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(bodyParser.json());
 app.use('/updates',updates);
 app.use('/login',login);
+app.use('/goal',goal);
 
 
 

@@ -59,7 +59,7 @@ function Homepage(props){
               color="stylish-color-dark"
               style={{ width: "100%", height: "450px" }}
             >
-              <GoalCard></GoalCard>
+              <GoalCard curremail={props.curremail}></GoalCard>
             </MDBCard>
           </div>
         </div>

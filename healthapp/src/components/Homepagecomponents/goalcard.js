@@ -6,7 +6,6 @@ import {
   MDBIcon,
 } from "mdbreact";
 
-
 function GoalCard(){
     return (
       <div>

@@ -7,19 +7,18 @@ import {
   MDBModalFooter,
   MDBModalHeader,
 } from "mdbreact";
+import axios from "axios";
 
-function SetGoal(){
+function SetGoal(props){
     
     const [modal, setModal] = useState(false);
     const [weight, setWeight] = useState();
-    const [height, setheight] = useState();
     const [bodyfat, setbodyfat] = useState();
 
     useEffect(() => {
       window.addEventListener("toggle", toggle);
       window.addEventListener("submit", submit);
       window.addEventListener("weight", handleweight);
-      window.addEventListener("height", handleheight);
       window.addEventListener("bodyfat", handlebodyfat);
     });
 
@@ -31,15 +30,19 @@ function SetGoal(){
       setWeight(event.target.value);
     }
 
-    function handleheight(event) {
-      setheight(event.target.value);
-    }
-
     function handlebodyfat(event) {
       setbodyfat(event.target.value);
     }
-    function submit() {
+    async function submit() {
       toggle();
+      const payload={weight:weight,bodyfat:bodyfat,email:props.curremail}
+      await axios.post("http://localhost:3000/goal/newgoal",payload).then((response)=>{
+        console.log(response);
+        if (props.setisLoading != null & props.setisLoading != null) {
+              props.getdata();
+              props.setisLoading(false);
+            }
+        })
     }
     return (
       <div>
@@ -54,15 +57,11 @@ function SetGoal(){
             <MDBModalBody>
               <form style={{ color: "black" }}>
                 <label>Weight(kg):</label>
-                <input type="text" className="form-control"></input>
-                <br />
-                <br />
-                <label>height(cm):</label>
-                <input type="text" className="form-control"></input>
+                <input type="text" className="form-control" onChange={handleweight}></input>
                 <br />
                 <br />
                 <label>bodyfat:</label>
-                <input type="text" className="form-control"></input>
+                <input type="text" className="form-control" onChange={handlebodyfat}></input>
                 <br />
                 <br />
               </form>
