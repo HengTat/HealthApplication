@@ -6,11 +6,14 @@ import {
   MDBCol,
   MDBIcon
 } from "mdbreact";
+import { useState } from "react";
 import CurrentHealth from "./Homepagecomponents/Currenthealthcard";
 import GoalCard from "./Homepagecomponents/goalcard";
 import Maingraph from "./Homepagecomponents/Maingraph";
 
 function Homepage(props){
+  const [isLoading, setisLoading] = useState(true);
+
     return (
       <div style={{ backgroundColor: "#37474F" }}>
         <br />
@@ -44,7 +47,7 @@ function Homepage(props){
               color="stylish-color-dark"
               style={{ width: "100%", height: "450px" }}
             >
-              <CurrentHealth curremail={props.curremail}></CurrentHealth>
+              <CurrentHealth curremail={props.curremail} setisLoading={setisLoading}></CurrentHealth>
             </MDBCard>
           </div>
           <div
@@ -59,7 +62,7 @@ function Homepage(props){
               color="stylish-color-dark"
               style={{ width: "100%", height: "450px" }}
             >
-              <GoalCard curremail={props.curremail}></GoalCard>
+              <GoalCard curremail={props.curremail} setisLoading={setisLoading}></GoalCard>
             </MDBCard>
           </div>
         </div>

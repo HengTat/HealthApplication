@@ -28,6 +28,12 @@ function Updates(props){
         width: 270,
       },
       {
+        label: "BodyFat",
+        field: "bodyfat",
+        sort: "asc",
+        width: 270,
+      },
+      {
         label: "BMI",
         field: "BMI",
         sort: "asc",

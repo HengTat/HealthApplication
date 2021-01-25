@@ -18,7 +18,7 @@ const healthdetail = mongoose.Schema({
     type: Number,
     required: false,
   },
-  Date: {
+  date: {
     type: Date,
     default: Date.now,
   },

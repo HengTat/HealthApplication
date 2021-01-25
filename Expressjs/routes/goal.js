@@ -24,4 +24,15 @@ router.get("/getgoals/:email",async(req,res)=>{
     goal.find({user:userid}).then((data)=>res.json(data));
 })
 
+//getlatestgoal
+router.get("/getlatest/:email",async(req,res)=>{
+    console.log(req.params.email);
+    const userid = await user.findOne({ email:req.params.email }).select('_id');
+    goal
+      .find({ user: userid })
+      .sort({ date:-1})
+      .limit(1)
+      .then((data) => res.json(data));
+})
+
 module.exports = router;

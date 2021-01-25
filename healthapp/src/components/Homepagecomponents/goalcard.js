@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   MDBBtn,
   MDBCardBody,
@@ -5,8 +6,36 @@ import {
   MDBCardText,
   MDBIcon,
 } from "mdbreact";
+import { useEffect, useState } from "react";
 
-function GoalCard(){
+function GoalCard(props){
+
+  const[goal,setgoal]= useState([{weight:0,bodyfat:0}]);
+  const [currhealth, setcurrhealth] = useState([
+    { BMI: 0, weight: 0, height: 0, bodyfat: 0, age: 0 },
+  ]);
+
+
+  async function getdata(){
+    props.setisLoading(true);
+    await axios.get("http://localhost:3000/goal/getlatest/"+props.curremail).then((data)=>{
+    setgoal(data.data);
+    });
+    await axios
+      .get(
+        "http://localhost:3000/updates/getlatesthealthdetail/" +
+          props.curremail
+      )
+      .then((data) => {
+        setcurrhealth(data.data);
+        props.setisLoading(false);
+      });
+  }
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
     return (
       <div>
         <MDBCardBody style={{ color: "white" }}>
@@ -19,18 +48,18 @@ function GoalCard(){
               <h4>
                 <div>
                   <div>
-                    <MDBIcon icon="weight" /> &nbsp;BodyWeight: 65 kg
+                    <MDBIcon icon="weight" /> &nbsp;BodyWeight: {goal[0].weight} kg
                   </div>
                   <br />
                   <div>
-                    <MDBIcon icon="percentage" /> &nbsp; Body Fat: 13%
+                    <MDBIcon icon="percentage" /> &nbsp; Body Fat: {goal[0].bodyfat} %
                   </div>
                   <br />
                 </div>
                 <div>
                   <div>Difference</div> <br />
                   <div>
-                    <MDBIcon icon="weight" /> &nbsp; BodyWeight: 12 kg{" "}
+                    <MDBIcon icon="weight" /> &nbsp; BodyWeight: 12 kg
                   </div>
                   <br />
                   <div>

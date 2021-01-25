@@ -8,7 +8,7 @@ function PostHealthUdpates(props){
     const[weight,setWeight]=useState();
     const [height, setheight] = useState();
     const [age, setage] = useState();
-    const [ bodyfat,setbodyfat]= useState();
+    const [bodyfat,setbodyfat]= useState();
 
     useEffect(()=>{
         window.addEventListener("toggle",toggle);
@@ -44,10 +44,12 @@ function PostHealthUdpates(props){
         if(props.setisLoading!=null){
         props.setisLoading(true);
         }
+        
         const payload = {
           email: props.curremail,
           weight: weight,
           height: height,
+          bodyfat: bodyfat,
           age: age,
         };
         await axios
@@ -59,7 +61,6 @@ function PostHealthUdpates(props){
               props.setisLoading(false);
             }
           });
-
     }
 
     return (

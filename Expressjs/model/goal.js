@@ -9,6 +9,10 @@ const goalModel = mongoose.Schema({
     type: Number,
     required: false,
   },
+  date:{
+      type:Date,
+      default:Date.now
+  },
   user: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
 });
 
