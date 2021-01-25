@@ -6,7 +6,6 @@ import {
   MDBCol,
   MDBIcon
 } from "mdbreact";
-import { useState } from "react";
 import CurrentHealth from "./Homepagecomponents/Currenthealthcard";
 import GoalCard from "./Homepagecomponents/goalcard";
 import Maingraph from "./Homepagecomponents/Maingraph";

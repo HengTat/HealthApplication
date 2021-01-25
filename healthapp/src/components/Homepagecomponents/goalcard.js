@@ -1,6 +1,5 @@
 import axios from "axios";
 import {
-  MDBBtn,
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
@@ -21,7 +20,10 @@ function GoalCard(props){
   async function getgoaldata(){
 
     await axios.get("http://localhost:3000/goal/getlatest/"+props.curremail).then((data)=>{
-    setgoal(data.data);
+      console.log(data.data);
+      if(data.data.length!==0){
+        setgoal(data.data);
+      }
     });
 
     await axios
@@ -30,17 +32,16 @@ function GoalCard(props){
           props.curremail
       )
       .then((data) => {
-        setcurrhealth(data.data);
+        if (data.data.length !== 0) {
+          setcurrhealth(data.data);
+        }
         setdifference({weight:(currhealth[0].weight-goal[0].weight),bodyfat:(currhealth[0].bodyfat-goal[0].bodyfat)})
       });
-
   }
 
   useEffect(() => {
     getgoaldata();
-  }, []);
-
-
+  },[]);
 
     return (
       <div>

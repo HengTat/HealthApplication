@@ -11,7 +11,7 @@ import Goals from './components/Goals';
 import { useState } from 'react';
 
 function App() {
-  const [loginemail,setloginemail]= useState();
+  const[loginemail,setloginemail]= useState();
 
   function setcurremail(email){
     setloginemail(email);

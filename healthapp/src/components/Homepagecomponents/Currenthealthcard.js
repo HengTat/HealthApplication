@@ -15,13 +15,15 @@ function CurrentHealth(props){
       await axios
         .get("http://localhost:3000/updates/getlatesthealthdetail/" + props.curremail)
         .then((data) => {
-          setcurrhealth(data.data);
+          if(data.data.length!==0){
+             setcurrhealth(data.data);
+          }
         });
     }
 
     useEffect(() => {
       gethealthdata();
-    }, []);
+    },[]);
 
 
 
