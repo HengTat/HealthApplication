@@ -3,7 +3,7 @@ const mongoose= require('mongoose');
 
 const healthdetail = mongoose.Schema({
   bodyfat: {
-    type: String,
+    type: Number,
     required: false,
   },
   weight: {

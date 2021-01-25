@@ -26,7 +26,7 @@ function Homepage(props){
                 <MDBIcon icon="heartbeat" size="lg" /> &nbsp;Your Health
               </MDBCardTitle>
               <MDBCardText>
-                <Maingraph></Maingraph>
+                <Maingraph curremail={props.curremail}></Maingraph>
               </MDBCardText>
             </MDBCardBody>
           </MDBCard>
