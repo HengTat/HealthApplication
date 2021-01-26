@@ -2,11 +2,9 @@ import axios from "axios";
 import Highcharts, { destroyObjectProperties } from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { useEffect, useState } from "react";
-
-
+import config from "../../config.json"
 
 function Maingraph(props){
-
   const [graphdatabodyfat, setgraphdatabodyfat] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
     const [graphdataweight, setgraphdataweight] = useState([
       0,
@@ -134,7 +132,7 @@ function Maingraph(props){
 
   async function getgraphdata(){
     await axios.get(
-      "http://localhost:3000/updates/gethealthdetailscurrentyear/"+props.curremail
+      config.apiserver+"updates/gethealthdetailscurrentyear/"+props.curremail
     ).then(data=>{
       var listofbodyfat=[]
       var listofweight=[]

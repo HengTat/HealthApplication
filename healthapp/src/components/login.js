@@ -1,7 +1,7 @@
 import{MDBBtn,MDBCard,MDBCardBody,MDBCardTitle,MDBCol,MDBCardText,MDBIcon} from 'mdbreact';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import config from "../config.json"
 
 function Login(props){
     const[email,setemail]= useState("");
@@ -29,7 +29,7 @@ function Login(props){
             setmsg("Email and Password required");
         }
         else{
-        axios.get("http://localhost:3000" + "/login/signin/"+email+"/"+password)
+        axios.get(config.apiserver + "login/signin/"+email+"/"+password)
             .then((response) => {
             if (response.status === 200) {
               setmsg("");

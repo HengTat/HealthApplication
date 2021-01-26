@@ -1,7 +1,8 @@
-import react,{useState,useEffect} from 'react'
+import {useState,useEffect} from 'react'
 import {MDBCard,MDBDataTable} from 'mdbreact';
 import SetGoal from './Goals/Setgoal';
 import axios from 'axios';
+import config from '../config.json'
 
 function Goals(props){
      const [isLoading, setisLoading] = useState(true);
@@ -38,13 +39,13 @@ function Goals(props){
      };
 
      function getdata() {
+       console.log(config.apiserver);
        axios
          .get(
-           "http://localhost:3000/goal/getgoals/" +
+           config.apiserver+"goal/getgoals/" +
              props.curremail
          )
          .then((data) => {
-           console.log("test123")
            var i = 1;
            for (var x of data.data) {
              x["number"] = i;

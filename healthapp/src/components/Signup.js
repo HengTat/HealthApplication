@@ -9,6 +9,7 @@ import {
 } from "mdbreact";
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import config from "../config.json"
 
 function Signup (props){
 
@@ -33,7 +34,7 @@ function Signup (props){
 
     function submitlistener(){
         var payload = { email: email, password: password };
-        axios.post("http://localhost:3000"+"/login/signup",payload).then(response=>{
+        axios.post(config.apiserver+"login/signup",payload).then(response=>{
             
             if (response.status===201){
                 setmsg();

@@ -1,7 +1,8 @@
-import react, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {MDBCard,MDBDataTable} from 'mdbreact'
 import PostHealthUdpates from './HealthUpdates/posthealthupdates';
 import axios from 'axios';
+import config from '../config.json'
 
 function Updates(props){
   const [isLoading, setisLoading] = useState(true);
@@ -52,7 +53,7 @@ function Updates(props){
   function getdata(){
     axios
       .get(
-        "http://localhost:3000/updates/getcurrenthealthstatus/" +
+        config.apiserver+"updates/getcurrenthealthstatus/" +
           props.curremail
       )
       .then((data) => {

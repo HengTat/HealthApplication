@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {MDBBtn, MDBCard, MDBCardBody, MDBCardTitle,MDBIcon,MDBAlert} from 'mdbreact'
 import { useEffect, useState } from 'react';
+import config from "../config.json"
 
 function Editaccount(props) {
   const [oldpassword, setoldpassword] = useState();
@@ -26,7 +27,7 @@ function Editaccount(props) {
   async function submit(){
       await axios
         .put(
-          "http://localhost:3000/login/changepassword/" + props.curremail+"/"+
+          config.apiserver+"login/changepassword/" + props.curremail+"/"+
             oldpassword +
             "/" +
             newpassword

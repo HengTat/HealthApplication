@@ -7,13 +7,15 @@ import {
 } from "mdbreact";
 import { useEffect, useState } from "react";
 import PostHealthUdpates from '../HealthUpdates/posthealthupdates';
+import config from "../../config.json";
+
 
 function CurrentHealth(props){
     const [currhealth, setcurrhealth] = useState([{BMI: 0, weight: 0,height:0,bodyfat:0,age:0}]);
 
     async function gethealthdata() {
       await axios
-        .get("http://localhost:3000/updates/getlatesthealthdetail/" + props.curremail)
+        .get(config.apiserver+"updates/getlatesthealthdetail/" + props.curremail)
         .then((data) => {
           if(data.data.length!==0){
              setcurrhealth(data.data);

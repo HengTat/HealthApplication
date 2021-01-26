@@ -7,6 +7,8 @@ import {
 } from "mdbreact";
 import { useEffect, useState } from "react";
 import SetGoal from "../Goals/Setgoal";
+import config from "../../config.json";
+
 
 function GoalCard(props){
 
@@ -19,7 +21,7 @@ function GoalCard(props){
 
   async function getgoaldata(){
 
-    await axios.get("http://localhost:3000/goal/getlatest/"+props.curremail).then((data)=>{
+    await axios.get(config.apiserver+"goal/getlatest/"+props.curremail).then((data)=>{
       console.log(data.data);
       if(data.data.length!==0){
         setgoal(data.data);
@@ -28,7 +30,7 @@ function GoalCard(props){
 
     await axios
       .get(
-        "http://localhost:3000/updates/getlatesthealthdetail/" +
+        config.apiserver+"updates/getlatesthealthdetail/" +
           props.curremail
       )
       .then((data) => {
