@@ -18,16 +18,12 @@ function GoalCard(props){
   ]);
   const[difference,setdifference]=useState({weight:0,bodyfat:0});
 
-
   async function getgoaldata(){
-
     await axios.get(config.apiserver+"goal/getlatest/"+props.curremail).then((data)=>{
-      console.log(data.data);
       if(data.data.length!==0){
         setgoal(data.data);
       }
     });
-
     await axios
       .get(
         config.apiserver+"updates/getlatesthealthdetail/" +
@@ -45,44 +41,44 @@ function GoalCard(props){
     getgoaldata();
   },[]);
 
-    return (
-      <div>
-        <MDBCardBody style={{ color: "white" }}>
-          <MDBCardTitle>
-            <MDBIcon icon="bullseye" />
-            &nbsp;Goal
-          </MDBCardTitle>
-          <MDBCardText style={{ color: "white" }}>
-            <div>
-              <h4>
+  return (
+    <div>
+      <MDBCardBody style={{ color: "white" }}>
+        <MDBCardTitle>
+          <MDBIcon icon="bullseye" />
+          &nbsp;Goal
+        </MDBCardTitle>
+        <MDBCardText style={{ color: "white" }}>
+          <div>
+            <h4>
+              <div>
                 <div>
-                  <div>
-                    <MDBIcon icon="weight" /> &nbsp;BodyWeight: {goal[0].weight} kg
-                  </div>
-                  <br />
-                  <div>
-                    <MDBIcon icon="percentage" /> &nbsp; Body Fat: {goal[0].bodyfat} %
-                  </div>
-                  <br />
+                  <MDBIcon icon="weight" /> &nbsp;BodyWeight: {goal[0].weight} kg
                 </div>
+                <br />
                 <div>
-                  <div>Difference</div> <br />
-                  <div>
-                    <MDBIcon icon="weight" /> &nbsp; BodyWeight: {difference.weight} kg
-                  </div>
-                  <br />
-                  <div>
-                    <MDBIcon icon="percentage" /> &nbsp; BodyFat: {difference.bodyfat} %
-                  </div>
-                  <br />
+                  <MDBIcon icon="percentage" /> &nbsp; Body Fat: {goal[0].bodyfat} %
                 </div>
-              </h4>
-              <SetGoal curremail={props.curremail} getgoaldata={getgoaldata}></SetGoal>
-            </div>
-          </MDBCardText>
-        </MDBCardBody>
-      </div>
-    );
+                <br />
+              </div>
+              <div>
+                <div>Difference</div> <br />
+                <div>
+                  <MDBIcon icon="weight" /> &nbsp; BodyWeight: {difference.weight} kg
+                </div>
+                <br />
+                <div>
+                  <MDBIcon icon="percentage" /> &nbsp; BodyFat: {difference.bodyfat} %
+                </div>
+                <br />
+              </div>
+            </h4>
+            <SetGoal curremail={props.curremail} getgoaldata={getgoaldata}></SetGoal>
+          </div>
+        </MDBCardText>
+      </MDBCardBody>
+    </div>
+  );
 }
 
 export default GoalCard;

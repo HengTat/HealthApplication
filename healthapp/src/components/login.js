@@ -38,7 +38,6 @@ function Login(props){
             }
             })
             .catch((error) => {
-              console.log(props);
             console.log(error);
             if(error.response!=null) setmsg(error.response.data.msg);
             });

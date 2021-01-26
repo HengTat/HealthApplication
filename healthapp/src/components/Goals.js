@@ -39,7 +39,6 @@ function Goals(props){
      };
 
      function getdata() {
-       console.log(config.apiserver);
        axios
          .get(
            config.apiserver+"goal/getgoals/" +
