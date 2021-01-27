@@ -4,6 +4,10 @@ Personal Health Application built using MERN stack
 To Run: <br>
 Create a .env file in the Express directory and create a varaible called DB_CONNECTION and insert mongodb connection string into the variable String.<br>
 
+Go to terminal and change directory to healthtask and run NPM update to update dependencies.<br>
+Run NPM start to run react front end.<br>
+If Express is not running on locahost3000, change config.json file to correct ip address and port number.<br>
+
 
 <h2>ScreenShots</h2>
 <img src="https://user-images.githubusercontent.com/60685286/105620458-6031fb80-5e38-11eb-9c50-627c5c32ce9d.png">
