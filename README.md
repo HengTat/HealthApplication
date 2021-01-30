@@ -1,7 +1,7 @@
 # HealthApplication
 Personal Health Application built using MERN stack
 
-To Run: <br>
+<h2>To Run: </h2> <br>
 Create a .env file in the Express directory and create a varaible called DB_CONNECTION and insert mongodb connection string into the variable String.<br>
 
 Go to terminal and change directory to healthtask and run NPM update to update dependencies.<br>
